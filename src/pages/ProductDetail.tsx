@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, ShoppingCart, Check, Plus, Minus, Star } from 'lucide-react';
 import { products } from '../data/products';
 import { useCart } from '../context/CartContext';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 export default function ProductDetail() {
   const { id } = useParams();

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { CheckCircle, Home, Receipt, MapPin } from 'lucide-react';
 
 export default function OrderConfirmation() {

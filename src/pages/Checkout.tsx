@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { CreditCard, Truck, User, MapPin, Check } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 

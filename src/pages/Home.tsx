@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Coffee, Heart, Award, Clock, ArrowRight, Star, Play } from 'lucide-react';
 import { products } from '../data/products';
