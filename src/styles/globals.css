@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fonts */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+
+  /* Color Palette - Premium Coffee Theme */
+  --color-espresso: #2d1b13; /* Very dark brown - Primary Text */
+  --color-coffee: #4a3428; /* Dark brown - Secondary Text */
+  --color-latte: #8b7355; /* Medium brown - Accents */
+  --color-cream: #f5e6d3; /* Light beige - Backgrounds */
+  --color-foam: #faf7f2; /* Off-white - Card Backgrounds */
+  --color-accent: #c17817; /* Orange/Amber - Buttons, Links */
+  --color-gold: #d4a574; /* Gold - Highlights */
+  --color-white: #ffffff;
+  --color-black: #1a1a1a;
+}
+
+/* Base Styles */
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-coffee);
+    background-color: var(--color-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    color: var(--color-espresso);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 cursor-pointer;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-gold));
+    color: var(--color-white);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 2px solid currentColor;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl p-6 shadow-md transition-all duration-300;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+}

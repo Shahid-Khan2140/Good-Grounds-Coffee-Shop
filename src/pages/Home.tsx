@@ -1,0 +1,281 @@
+import { Link } from 'react-router';
+import { motion } from 'motion/react';
+import { Coffee, Heart, Award, Clock, ArrowRight, Star, Play } from 'lucide-react';
+import { products } from '../data/products';
+
+export default function Home() {
+  const featuredProducts = products.filter(p => p.featured).slice(0, 3);
+
+  const features = [
+    {
+      icon: Coffee,
+      title: 'Premium Quality',
+      description: 'Ethically sourced beans from the finest coffee regions around the world'
+    },
+    {
+      icon: Heart,
+      title: 'Made with Love',
+      description: 'Every cup is crafted with care by our expert baristas'
+    },
+    {
+      icon: Award,
+      title: 'Award Winning',
+      description: 'Recognized for excellence in coffee craftsmanship and service'
+    },
+    {
+      icon: Clock,
+      title: 'Always Fresh',
+      description: 'Roasted daily to ensure the freshest, most flavorful coffee'
+    }
+  ];
+
+  return (
+    <div className="w-full">
+      {/* Hero Section */}
+      <section className="relative min-h-[600px] lg:min-h-[700px] flex items-center justify-center overflow-hidden">
+        {/* Background Video/Image with Strong Overlay */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            poster="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=2000"
+          >
+            <source src="https://cdn.coverr.co/videos/coverr-coffee-shop-4563/1080p.mp4" type="video/mp4" />
+          </video>
+          {/* Dark Gradient Overlay for Maximum Text Contrast */}
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-espresso)] via-transparent to-transparent opacity-90" />
+        </div>
+
+        {/* Content */}
+        <div className="container relative z-10 text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="max-w-4xl mx-auto"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="mb-8"
+            >
+              <span className="inline-block px-6 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium tracking-wide">
+                Welcome to Good Grounds Coffee
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-lg"
+            >
+              Where Every Cup
+              <br />
+              <span className="text-[var(--color-gold)]">
+                Tells a Story
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto font-light drop-shadow-md"
+            >
+              Experience the perfect blend of exceptional coffee, warm hospitality, 
+              and a welcoming atmosphere in the heart of Goodland, Kansas.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
+              <Link to="/menu" className="btn btn-primary btn-large w-full sm:w-auto">
+                Order Online
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link to="/about" className="btn btn-outline btn-large w-full sm:w-auto hover:bg-white hover:text-[var(--color-espresso)]">
+                Our Story
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Story Section */}
+      <section className="py-20 lg:py-32 bg-[var(--color-foam)]">
+        <div className="container">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left: Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.8 }}
+              className="order-2 lg:order-1"
+            >
+              <span className="inline-block text-[var(--color-accent)] font-bold text-sm uppercase tracking-wider mb-4">
+                Our Story
+              </span>
+              <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[var(--color-espresso)] mb-6">
+                Experience Our Story
+              </h2>
+              <div className="space-y-6 text-lg text-[var(--color-coffee)] leading-relaxed">
+                <p>
+                  At Good Grounds Coffee & Bistro, we believe that great coffee is more than just a beverage—it's an experience that brings people together.
+                </p>
+                <p>
+                  Since opening our doors in Goodland, Kansas, we've been committed to serving the finest specialty coffee alongside delicious food in a warm, welcoming atmosphere.
+                </p>
+                <p>
+                  Our passion for quality drives everything we do, from sourcing the best beans to crafting each drink with precision and care. We're not just a coffee shop; we're a community gathering place.
+                </p>
+              </div>
+              <Link 
+                to="/about" 
+                className="inline-flex items-center gap-2 mt-8 text-[var(--color-accent)] font-bold hover:gap-4 transition-all group"
+              >
+                Learn More About Us
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.div>
+
+            {/* Right: Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.8 }}
+              className="order-1 lg:order-2"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-[400px] lg:h-[500px] object-cover"
+                  poster="https://images.unsplash.com/photo-1559496417-e7f25cb247f6?auto=format&fit=crop&q=80&w=1000"
+                >
+                  <source src="https://videos.pexels.com/video-files/2909914/2909914-hd_1920_1080_25fps.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 lg:py-32 bg-white">
+        <div className="container">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block text-[var(--color-accent)] font-bold text-sm uppercase tracking-wider mb-4">
+              Why Choose Us
+            </span>
+            <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[var(--color-espresso)] mb-6">
+              What Makes Us Special
+            </h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="card text-center hover:bg-[var(--color-foam)] border border-transparent hover:border-[var(--color-cream)]"
+              >
+                <div className="mb-6 flex justify-center">
+                  <div className="w-16 h-16 rounded-2xl bg-[var(--color-cream)] flex items-center justify-center text-[var(--color-accent)]">
+                    <feature.icon className="w-8 h-8" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-serif font-bold text-[var(--color-espresso)] mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-[var(--color-coffee)]">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Products */}
+      <section className="py-20 lg:py-32 bg-[var(--color-foam)]">
+        <div className="container">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block text-[var(--color-accent)] font-bold text-sm uppercase tracking-wider mb-4">
+              Featured Menu
+            </span>
+            <h2 className="text-4xl lg:text-5xl font-serif font-bold text-[var(--color-espresso)] mb-6">
+              Customer Favorites
+            </h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredProducts.map((product, index) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Link to={`/product/${product.id}`} className="group block h-full">
+                  <div className="card h-full overflow-hidden p-0 bg-white">
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      {product.featured && (
+                        <div className="absolute top-4 right-4 bg-[var(--color-gold)] text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
+                          Popular
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-2xl font-serif font-bold text-[var(--color-espresso)] mb-2 group-hover:text-[var(--color-accent)] transition-colors">
+                        {product.name}
+                      </h3>
+                      <p className="text-[var(--color-coffee)] mb-4 line-clamp-2">
+                        {product.description}
+                      </p>
+                      <div className="flex items-center justify-between mt-auto">
+                        <span className="text-xl font-bold text-[var(--color-accent)]">
+                          ${product.price.toFixed(2)}
+                        </span>
+                        <span className="text-sm font-bold text-[var(--color-espresso)] group-hover:text-[var(--color-accent)] flex items-center gap-1 transition-colors">
+                          Order Now <ArrowRight className="w-4 h-4" />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link to="/menu" className="btn btn-primary btn-large">
+              View Full Menu
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
