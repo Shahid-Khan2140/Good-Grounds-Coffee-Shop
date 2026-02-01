@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { Coffee, Heart, Award, Clock, ArrowRight, Star, Play } from 'lucide-react';
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
+import coffeeVideo from '../assets/coffee-video.mp4';
 
 export default function Home() {
   const featuredProducts = products.filter(p => p.featured).slice(0, 3);
@@ -42,9 +43,9 @@ export default function Home() {
             muted
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
-            poster="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=2000"
+            poster="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=2000"
           >
-            <source src="https://cdn.coverr.co/videos/coverr-coffee-shop-4563/1080p.mp4" type="video/mp4" />
+            <source src={coffeeVideo} type="video/mp4" />
           </video>
           {/* Dark Gradient Overlay for Maximum Text Contrast */}
           <div className="absolute inset-0 bg-black/60" />
@@ -163,7 +164,7 @@ export default function Home() {
                   className="w-full h-[400px] lg:h-[500px] object-cover"
                   poster="https://images.unsplash.com/photo-1559496417-e7f25cb247f6?auto=format&fit=crop&q=80&w=1000"
                 >
-                  <source src="https://videos.pexels.com/video-files/2909914/2909914-hd_1920_1080_25fps.mp4" type="video/mp4" />
+                  <source src={coffeeVideo} type="video/mp4" />
                 </video>
               </div>
             </motion.div>
