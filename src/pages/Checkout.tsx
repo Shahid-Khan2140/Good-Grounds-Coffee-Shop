@@ -21,6 +21,7 @@ export default function Checkout() {
     city: '',
     state: '',
     zip: '',
+    countryCode: '+1',
     cardNumber: '',
     cardName: '',
     expiry: '',
@@ -32,7 +33,7 @@ export default function Checkout() {
     return null;
   }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -195,16 +196,38 @@ export default function Checkout() {
                     <label htmlFor="phone" className="block text-sm font-semibold text-[var(--color-espresso)] mb-2">
                       Phone <span className="text-red-500">*</span>
                     </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      placeholder="(123) 456-7890"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-5 py-4 rounded-2xl border-2 border-[var(--color-cream)] focus:border-[var(--color-accent)] focus:outline-none focus:ring-4 focus:ring-[var(--color-accent)]/10 transition-all hover:border-[var(--color-latte)] shadow-sm text-[var(--color-espresso)]"
-                    />
+                    <div className="flex gap-3">
+                      <div className="relative w-36 flex-shrink-0">
+                        <select
+                          name="countryCode"
+                          value={formData.countryCode}
+                          onChange={handleInputChange}
+                          className="w-full appearance-none px-4 py-4 rounded-2xl border-2 border-[var(--color-cream)] focus:border-[var(--color-accent)] focus:outline-none focus:ring-4 focus:ring-[var(--color-accent)]/10 transition-all hover:border-[var(--color-latte)] shadow-sm text-[var(--color-espresso)] bg-white cursor-pointer font-medium"
+                        >
+                          <option value="+1">🇺🇸 +1</option>
+                          <option value="+44">🇬🇧 +44</option>
+                          <option value="+91">🇮🇳 +91</option>
+                          <option value="+61">🇦🇺 +61</option>
+                          <option value="+81">🇯🇵 +81</option>
+                          <option value="+49">🇩🇪 +49</option>
+                          <option value="+33">🇫🇷 +33</option>
+                          <option value="+86">🇨🇳 +86</option>
+                        </select>
+                        <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-[var(--color-espresso)] opacity-50">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                      </div>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Mobile Number"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        required
+                        className="flex-1 w-full px-5 py-4 rounded-2xl border-2 border-[var(--color-cream)] focus:border-[var(--color-accent)] focus:outline-none focus:ring-4 focus:ring-[var(--color-accent)]/10 transition-all hover:border-[var(--color-latte)] shadow-sm text-[var(--color-espresso)]"
+                      />
+                    </div>
                   </div>
                 </div>
 
