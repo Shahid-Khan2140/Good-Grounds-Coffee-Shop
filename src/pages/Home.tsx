@@ -4,6 +4,8 @@ import { Coffee, Heart, Award, Clock, ArrowRight, Star, Play } from 'lucide-reac
 import { products } from '../data/products';
 import ProductCard from '../components/ProductCard';
 import coffeeVideo from '../assets/coffee-video.mp4';
+import logo from '../assets/logo.png';
+import storefrontImg from '../assets/storefront_v2.png';
 
 export default function Home() {
   const featuredProducts = products.filter(p => p.featured).slice(0, 3);
@@ -34,78 +36,49 @@ export default function Home() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative min-h-[600px] lg:min-h-[700px] flex items-center justify-center overflow-hidden">
-        {/* Background Video/Image with Strong Overlay */}
+      {/* Hero Section */}
+      <section className="relative min-h-[600px] lg:min-h-[700px] flex items-center overflow-hidden">
+        {/* Background Image: Storefront */}
         <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-            poster="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=2000"
-          >
-            <source src={coffeeVideo} type="video/mp4" />
-          </video>
-          {/* Dark Gradient Overlay for Maximum Text Contrast */}
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-espresso)] via-transparent to-transparent opacity-90" />
+          <img
+            src={storefrontImg}
+            alt="Good Grounds Coffee Storefront"
+            className="absolute inset-0 w-full h-full object-cover opacity-90"
+          />
+          {/* Subtle Dark Overlay for Text Readability - slightly lighter for this image */}
+          <div className="absolute inset-0 bg-black/50" />
         </div>
 
         {/* Content */}
-        <div className="container relative z-10 text-center px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="max-w-4xl mx-auto"
-          >
+        <div className="container relative z-10 px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            
+            {/* Left Column: Text & CTA */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="mb-8"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="text-left text-white"
             >
-              <span className="inline-block px-6 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium tracking-wide">
-                Welcome to Good Grounds Coffee
-              </span>
-            </motion.div>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight drop-shadow-lg">
+                Welcome to
+                <br />
+                Good Grounds!
+              </h1>
+              
+              <p className="text-lg md:text-xl mb-8 font-light tracking-wide max-w-lg drop-shadow-md">
+                Start Your Day Right! Add a splash of joy, or cream, to your day with Good Grounds!
+              </p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-lg"
-            >
-            Welcome to
-            <br />
-            Good Grounds
-          </motion.h1>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl mb-8 font-light tracking-wide max-w-2xl mx-auto"
-          >
-            Start Your Day Right! Add a splash of joy, or cream, to your day with Good Grounds!
-          </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
-            >
-              <Link to="/menu" className="btn btn-primary btn-large w-full sm:w-auto">
-                Order Online
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link to="/about" className="btn btn-outline btn-large w-full sm:w-auto hover:bg-white hover:text-[var(--color-espresso)]">
-                Our Story
+              <Link to="/menu" className="btn bg-[#2C1810] text-white hover:bg-[#4A3022] border-none px-8 py-4 text-lg rounded-md transition-all shadow-lg">
+                Order now
               </Link>
             </motion.div>
-          </motion.div>
+
+            {/* Right Column: Logo Overlay Removed */}
+            <div className="hidden lg:block"></div>
+
+          </div>
         </div>
       </section>
 
@@ -129,10 +102,10 @@ export default function Home() {
               </h2>
               <div className="space-y-6 text-lg text-[var(--color-coffee)] leading-relaxed">
                 <p>
-                  At Good Grounds Coffee & Bistro, we believe that great coffee is more than just a beverage—it's an experience that brings people together.
+                  At Good Grounds Coffee, we believe that great coffee is more than just a beverage—it's an experience that brings people together.
                 </p>
                 <p>
-                  Since opening our doors in Goodland, Kansas, we've been committed to serving the finest specialty coffee alongside delicious food in a warm, welcoming atmosphere.
+                  Since opening our doors in Goodland, Kansas, we've been committed to serving the finest specialty coffee in a warm, welcoming atmosphere.
                 </p>
                 <p>
                   Our passion for quality drives everything we do, from sourcing the best beans to crafting each drink with precision and care. We're not just a coffee shop; we're a community gathering place.

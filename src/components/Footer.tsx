@@ -140,7 +140,7 @@ export default function Footer() {
         <div className="container py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
             <p>
-              © {currentYear} Good Grounds Coffee & Bistro. All rights reserved.
+              © {currentYear} Good Grounds Coffee. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link to="/privacy" className="hover:text-white transition-colors">
