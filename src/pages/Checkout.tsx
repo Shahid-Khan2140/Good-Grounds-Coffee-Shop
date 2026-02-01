@@ -266,95 +266,140 @@ export default function Checkout() {
                   <h2 className="text-2xl font-serif text-[var(--color-espresso)]">Payment</h2>
                 </div>
 
-                <div className="grid grid-cols-3 gap-3 mb-6">
+                <div className="grid grid-cols-3 gap-4 mb-8">
                   <motion.button
                     type="button"
                     onClick={() => setPaymentMethod('card')}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`p-4 rounded-2xl border-2 transition-all ${
+                    className={`relative p-4 rounded-xl border transition-all duration-300 flex flex-col items-center justify-center gap-3 overflow-hidden ${
                       paymentMethod === 'card'
-                        ? 'border-[var(--color-accent)] bg-gradient-to-br from-[var(--color-accent)]/10 to-[var(--color-gold)]/10 shadow-md'
-                        : 'border-[var(--color-cream)] hover:border-[var(--color-latte)] hover:shadow-sm'
+                        ? 'border-[#D4A574] bg-[#FFF8F0] shadow-md ring-1 ring-[#D4A574]'
+                        : 'border-gray-200 bg-white hover:border-[#D4A574]/50'
                     }`}
                   >
-                    <CreditCard className="w-6 h-6 mx-auto text-[var(--color-accent)]" />
-                    <div className="text-sm mt-2 text-center font-medium">Card</div>
+                    <div className={`p-2 rounded-full ${paymentMethod === 'card' ? 'bg-[#D4A574]/20' : 'bg-gray-100'}`}>
+                      <CreditCard className={`w-6 h-6 ${paymentMethod === 'card' ? 'text-[#D4A574]' : 'text-gray-500'}`} />
+                    </div>
+                    <span className={`text-sm font-semibold tracking-wide ${paymentMethod === 'card' ? 'text-[#8B5E3C]' : 'text-gray-600'}`}>Card</span>
+                    {paymentMethod === 'card' && (
+                      <motion.div
+                        layoutId="activePayment"
+                        className="absolute inset-0 border-2 border-[#D4A574] rounded-xl"
+                        transition={{ duration: 0.3 }}
+                      />
+                    )}
                   </motion.button>
+
                   <motion.button
                     type="button"
                     onClick={() => setPaymentMethod('apple')}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`p-4 rounded-2xl border-2 transition-all ${
+                    className={`relative p-4 rounded-xl border transition-all duration-300 flex flex-col items-center justify-center gap-3 overflow-hidden ${
                       paymentMethod === 'apple'
-                        ? 'border-[var(--color-accent)] bg-gradient-to-br from-[var(--color-accent)]/10 to-[var(--color-gold)]/10 shadow-md'
-                        : 'border-[var(--color-cream)] hover:border-[var(--color-latte)] hover:shadow-sm'
+                        ? 'border-black bg-black text-white shadow-md'
+                        : 'border-gray-200 bg-white hover:border-black/50'
                     }`}
                   >
-                    <div className="text-2xl mx-auto text-center">🍎</div>
-                    <div className="text-sm mt-2 text-center font-medium">Apple Pay</div>
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Apple_logo_white.svg" 
+                          alt="Apple Pay" 
+                          className={`w-6 h-6 object-contain ${paymentMethod === 'apple' ? '' : 'invert'}`} 
+                     />
+                    <span className={`text-sm font-semibold tracking-wide ${paymentMethod === 'apple' ? 'text-white' : 'text-gray-600'}`}>Apple Pay</span>
                   </motion.button>
+
                   <motion.button
                     type="button"
                     onClick={() => setPaymentMethod('google')}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`p-4 rounded-2xl border-2 transition-all ${
+                    className={`relative p-4 rounded-xl border transition-all duration-300 flex flex-col items-center justify-center gap-3 overflow-hidden ${
                       paymentMethod === 'google'
-                        ? 'border-[var(--color-accent)] bg-gradient-to-br from-[var(--color-accent)]/10 to-[var(--color-gold)]/10 shadow-md'
-                        : 'border-[var(--color-cream)] hover:border-[var(--color-latte)] hover:shadow-sm'
+                        ? 'border-[#4285F4] bg-white text-[#4285F4] shadow-md ring-1 ring-[#4285F4]'
+                        : 'border-gray-200 bg-white hover:border-[#4285F4]/50'
                     }`}
                   >
-                    <div className="text-2xl mx-auto text-center">G</div>
-                    <div className="text-sm mt-2 text-center font-medium">Google Pay</div>
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" 
+                          alt="Google Pay" 
+                          className="w-6 h-6 object-contain" 
+                     />
+                    <span className={`text-sm font-semibold tracking-wide ${paymentMethod === 'google' ? 'text-gray-800' : 'text-gray-600'}`}>Google Pay</span>
                   </motion.button>
                 </div>
 
                 {paymentMethod === 'card' && (
-                  <div className="space-y-4">
-                    <input
-                      type="text"
-                      name="cardNumber"
-                      placeholder="Card Number"
-                      value={formData.cardNumber}
-                      onChange={handleInputChange}
-                      maxLength={19}
-                      required
-                      className="w-full px-5 py-4 rounded-2xl border-2 border-[var(--color-cream)] focus:border-[var(--color-accent)] focus:outline-none focus:ring-4 focus:ring-[var(--color-accent)]/10 transition-all hover:border-[var(--color-latte)] shadow-sm"
-                    />
-                    <input
-                      type="text"
-                      name="cardName"
-                      placeholder="Cardholder Name"
-                      value={formData.cardName}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-5 py-4 rounded-2xl border-2 border-[var(--color-cream)] focus:border-[var(--color-accent)] focus:outline-none focus:ring-4 focus:ring-[var(--color-accent)]/10 transition-all hover:border-[var(--color-latte)] shadow-sm"
-                    />
-                    <div className="grid grid-cols-2 gap-4">
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="space-y-5"
+                  >
+                    <div className="relative group">
                       <input
                         type="text"
-                        name="expiry"
-                        placeholder="MM/YY"
-                        value={formData.expiry}
+                        name="cardNumber"
+                        value={formData.cardNumber}
                         onChange={handleInputChange}
-                        maxLength={5}
+                        maxLength={19}
                         required
-                        className="px-5 py-4 rounded-2xl border-2 border-[var(--color-cream)] focus:border-[var(--color-accent)] focus:outline-none focus:ring-4 focus:ring-[var(--color-accent)]/10 transition-all hover:border-[var(--color-latte)] shadow-sm"
+                        className="peer w-full px-5 pt-6 pb-2 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-[#D4A574] focus:outline-none focus:ring-4 focus:ring-[#D4A574]/10 transition-all font-medium text-gray-800 tracking-wide placeholder-transparent"
+                        placeholder="Card Number"
                       />
-                      <input
-                        type="text"
-                        name="cvv"
-                        placeholder="CVV"
-                        value={formData.cvv}
-                        onChange={handleInputChange}
-                        maxLength={4}
-                        required
-                        className="px-5 py-4 rounded-2xl border-2 border-[var(--color-cream)] focus:border-[var(--color-accent)] focus:outline-none focus:ring-4 focus:ring-[var(--color-accent)]/10 transition-all hover:border-[var(--color-latte)] shadow-sm"
-                      />
+                      <label className="absolute left-5 top-4 text-xs font-medium text-gray-500 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#D4A574]">
+                        Card Number
+                      </label>
+                      <CreditCard className="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 peer-focus:text-[#D4A574] transition-colors" />
                     </div>
-                  </div>
+
+                    <div className="relative group">
+                      <input
+                        type="text"
+                        name="cardName"
+                        value={formData.cardName}
+                        onChange={handleInputChange}
+                        required
+                        className="peer w-full px-5 pt-6 pb-2 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-[#D4A574] focus:outline-none focus:ring-4 focus:ring-[#D4A574]/10 transition-all font-medium text-gray-800 tracking-wide placeholder-transparent"
+                        placeholder="Cardholder Name"
+                      />
+                      <label className="absolute left-5 top-4 text-xs font-medium text-gray-500 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#D4A574]">
+                        Cardholder Name
+                      </label>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-5">
+                      <div className="relative group">
+                        <input
+                          type="text"
+                          name="expiry"
+                          value={formData.expiry}
+                          onChange={handleInputChange}
+                          maxLength={5}
+                          required
+                          className="peer w-full px-5 pt-6 pb-2 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-[#D4A574] focus:outline-none focus:ring-4 focus:ring-[#D4A574]/10 transition-all font-medium text-gray-800 tracking-wide placeholder-transparent"
+                          placeholder="MM/YY"
+                        />
+                        <label className="absolute left-5 top-4 text-xs font-medium text-gray-500 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#D4A574]">
+                          MM/YY
+                        </label>
+                      </div>
+                      <div className="relative group">
+                        <input
+                          type="text"
+                          name="cvv"
+                          value={formData.cvv}
+                          onChange={handleInputChange}
+                          maxLength={4}
+                          required
+                          className="peer w-full px-5 pt-6 pb-2 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-[#D4A574] focus:outline-none focus:ring-4 focus:ring-[#D4A574]/10 transition-all font-medium text-gray-800 tracking-wide placeholder-transparent"
+                          placeholder="CVV"
+                        />
+                        <label className="absolute left-5 top-4 text-xs font-medium text-gray-500 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-1.5 peer-focus:text-xs peer-focus:text-[#D4A574]">
+                          CVV
+                        </label>
+                      </div>
+                    </div>
+                  </motion.div>
                 )}
               </motion.div>
             </div>
