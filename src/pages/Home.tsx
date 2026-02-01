@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Coffee, Heart, Award, Clock, ArrowRight, Star, Play } from 'lucide-react';
 import { products } from '../data/products';
+import ProductCard from '../components/ProductCard';
 
 export default function Home() {
   const featuredProducts = products.filter(p => p.featured).slice(0, 3);
@@ -75,22 +76,19 @@ export default function Home() {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-lg"
             >
-              Where Every Cup
-              <br />
-              <span className="text-[var(--color-gold)]">
-                Tells a Story
-              </span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto font-light drop-shadow-md"
-            >
-              Experience the perfect blend of exceptional coffee, warm hospitality, 
-              and a welcoming atmosphere in the heart of Goodland, Kansas.
-            </motion.p>
+            Welcome to
+            <br />
+            Good Grounds
+          </motion.h1>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xl md:text-2xl mb-8 font-light tracking-wide max-w-2xl mx-auto"
+          >
+            Start Your Day Right! Add a splash of joy, or cream, to your day with Good Grounds!
+          </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -232,39 +230,9 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="h-full"
               >
-                <Link to={`/product/${product.id}`} className="group block h-full">
-                  <div className="card h-full overflow-hidden p-0 bg-white">
-                    <div className="relative aspect-[4/3] overflow-hidden">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      {product.featured && (
-                        <div className="absolute top-4 right-4 bg-[var(--color-gold)] text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
-                          Popular
-                        </div>
-                      )}
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-2xl font-serif font-bold text-[var(--color-espresso)] mb-2 group-hover:text-[var(--color-accent)] transition-colors">
-                        {product.name}
-                      </h3>
-                      <p className="text-[var(--color-coffee)] mb-4 line-clamp-2">
-                        {product.description}
-                      </p>
-                      <div className="flex items-center justify-between mt-auto">
-                        <span className="text-xl font-bold text-[var(--color-accent)]">
-                          ${product.price.toFixed(2)}
-                        </span>
-                        <span className="text-sm font-bold text-[var(--color-espresso)] group-hover:text-[var(--color-accent)] flex items-center gap-1 transition-colors">
-                          Order Now <ArrowRight className="w-4 h-4" />
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
+                <ProductCard product={product} />
               </motion.div>
             ))}
           </div>

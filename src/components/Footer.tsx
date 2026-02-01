@@ -13,9 +13,8 @@ export default function Footer() {
   ];
 
   const hours = [
-    { day: 'Monday - Friday', time: '6:00 AM - 7:00 PM' },
-    { day: 'Saturday', time: '7:00 AM - 8:00 PM' },
-    { day: 'Sunday', time: '7:00 AM - 6:00 PM' },
+    { day: 'Monday - Saturday', time: '9:00 AM - 5:00 PM' },
+    { day: 'Sunday', time: 'Closed' },
   ];
 
   return (

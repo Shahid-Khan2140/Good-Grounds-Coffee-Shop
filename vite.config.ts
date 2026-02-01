@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 
 export default defineConfig({
+  base: '/Good-Grounds-Coffee-Shop/',
   plugins: [react(), tailwindcss()],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],

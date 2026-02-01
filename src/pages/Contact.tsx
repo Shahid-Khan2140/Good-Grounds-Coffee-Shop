@@ -11,12 +11,12 @@ export default function Contact() {
   });
 
   const businessHours = [
-    { day: 'Monday', hours: '6:00 AM - 1:30 PM' },
-    { day: 'Tuesday', hours: '6:00 AM - 1:30 PM' },
-    { day: 'Wednesday', hours: '6:00 AM - 1:30 PM' },
-    { day: 'Thursday', hours: '6:00 AM - 1:30 PM' },
-    { day: 'Friday', hours: '6:00 AM - 1:30 PM' },
-    { day: 'Saturday', hours: '6:00 AM - 1:30 PM' },
+    { day: 'Monday', hours: '9:00 AM - 5:00 PM' },
+    { day: 'Tuesday', hours: '9:00 AM - 5:00 PM' },
+    { day: 'Wednesday', hours: '9:00 AM - 5:00 PM' },
+    { day: 'Thursday', hours: '9:00 AM - 5:00 PM' },
+    { day: 'Friday', hours: '9:00 AM - 5:00 PM' },
+    { day: 'Saturday', hours: '9:00 AM - 5:00 PM' },
     { day: 'Sunday', hours: 'Closed' },
   ];
 
