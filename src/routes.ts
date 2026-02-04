@@ -10,6 +10,9 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import BrewGuides from "./pages/BrewGuides";
 import FAQ from "./pages/FAQ";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +29,8 @@ export const router = createBrowserRouter([
       { path: "contact", Component: Contact },
       { path: "brew-guides", Component: BrewGuides },
       { path: "faq", Component: FAQ },
+      { path: "privacy", Component: PrivacyPolicy },
+      { path: "terms", Component: TermsOfService },
     ],
   },
 ], {
