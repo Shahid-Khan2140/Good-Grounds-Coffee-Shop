@@ -8,6 +8,8 @@ import Checkout from "./pages/Checkout";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import BrewGuides from "./pages/BrewGuides";
+import FAQ from "./pages/FAQ";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +24,8 @@ export const router = createBrowserRouter([
       { path: "checkout", Component: Checkout },
       { path: "order-confirmation", Component: OrderConfirmation },
       { path: "contact", Component: Contact },
+      { path: "brew-guides", Component: BrewGuides },
+      { path: "faq", Component: FAQ },
     ],
   },
 ], {

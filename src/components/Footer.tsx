@@ -143,6 +143,9 @@ export default function Footer() {
               © {currentYear} Good Grounds Coffee. All rights reserved.
             </p>
             <div className="flex gap-6">
+              <Link to="/faq" className="hover:text-white transition-colors">
+                FAQ
+              </Link>
               <Link to="/privacy" className="hover:text-white transition-colors">
                 Privacy Policy
               </Link>

@@ -24,6 +24,7 @@ export default function Navbar() {
     { name: 'Home', path: '/' },
     { name: 'Menu', path: '/menu' },
     { name: 'About', path: '/about' },
+    { name: 'Guides', path: '/brew-guides' },
     { name: 'Contact', path: '/contact' },
   ];
 
